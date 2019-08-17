@@ -1,41 +1,50 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--bootstrap cdn-->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <!--google fonts css-->
+     <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
+       <!--ajax link-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <!--style sheet link-->
+   <link rel="stylesheet"type="text/css" href="style.css">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script src="app.js"></script>
 
+   <title>Super Pancake</title>
 </head>
-
 <body>
+<div class="jumbotron">
+        <div style="background:black" class="jumbotron">
+    <div class="mt-5 text-color">
+            <h1 class="text-center" style="color: chartreuse;">Food Mood</h1>
+    </div>
+       <div id="main">
+          <div class="row mx-auto well col-lg-12 mt-5">
+                
+                   <input  id="Cuisine" class= "mr-3" type="text" placeholder="Cuisine Type" />
+                   
+                   <input id="address" class="mr-3" type="text" placeholder="Address" />
 
-        <div class="container">
-
-        <div class= "jumbotron">
-                <h1 class="text-center">Food Finder</h1>
-                <h2 class="text-center">Super Pancake Man!</h2>
-                <img src="assets/images/super-pancake-gif.gif" />
-        </div>
-
-        <h1>Hungry?</h1>
-
-        <h3>Let us help!</h3>
-
-        <h3>What are you in the mood for?</h3>
-
-<!-- Adding food and location -->
-<div class="form-group">
-                <label for="name">Add Food</label>
-                <input class="form-control" id="food" type="text">
-                <button class="btn btn-info" id="addFood" type="Submit">Food Type</button>
+                   <button id = "search" class = "btn btn-info">Submit</button>
+           </div>
+                 <hr/>
+                               
+           </div>
+         </div>
 </div>
-
-<div class="form-group">
-                <label for="name">City,State</label>
-                <input class="form-control" id="location" type="text">
-                <button class="btn btn-info" id="addCity" type="Submit">City</button>
 </div>
-
-
+         <div>
+           <div class = "container"></div>
+            
+       <hr>
+        
 </body>
 </html>
