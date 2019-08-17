@@ -43,4 +43,4 @@ AJAX
 <h5>API's Used</h5>
 Zomato
 <br>
-Google Maps
+MapQuest
