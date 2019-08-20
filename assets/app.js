@@ -23,7 +23,7 @@ $(document).ready(function() {
             }
 
 
-            /// --option two for zip-code vs logtide and  Ltitude-----var url=" https://www.zipcodeapi.com/rest/<api_key>/info.<format>/<zip_code>/<units>",
+            /// --option two for zip-code vs logtide and  Latitude-----var url=" https://www.zipcodeapi.com/rest/<api_key>/info.<format>/<zip_code>/<units>",
 
             CustomEvent="";
 
