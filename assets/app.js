@@ -57,7 +57,7 @@ $(document).ready(function() {
                                             var location = res.restaurant.location;
                                                 result += "<div class='dataImg'>";
                                                   result += "</div>";result += "<img class='rest-img' alt='coming soon'src=" + value.thumb + " >"+  "<h2>" + value.name + "</h2>"+ "<h6>" + location.address + "</h6>"+"<h4>"+"Cuisines: "+ value.cuisines+"</h4>";  result += "<div>"; 
-                                                  result +="<h7>"+value.phone_numbers+""+"</h7>";"<div>"+"</div>"; result += "<a href=" + value.menu_url + " target='_blank' class='action_link'><style='color:Green;'><strong>" +"Menu" + "</strong></a>"+"<hr/><dv>"                              
+                                                  result +="<h7>"+value.phone_numbers+""+"</h7>";"<div>"+"</div>"; result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" +"Menu" + "</strong></a>"+"<hr/><dv>"                              
                                               });
 
                                        });
