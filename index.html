@@ -2,136 +2,107 @@
 <html lang="en">
 
 <head>
+  <title>Super Pancake</title>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--bootstrap cdn-->
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
-  <!--google fonts css-->
-  <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
+
   <!--ajax link-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!--style sheet link-->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <script src="assets/app.js"></script>
+
+  <!--google fonts css-->
+  <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
 
   <!--These links make the carousel work! (https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h)-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>-->
-  <script src="assets/javascript/app.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!--style sheet link-->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
   <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
 
-  <title>Super Pancake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<style>
-  .cuisine-name {
-    font-size: 200px;
-  }
+<body style="background-color:black;">
+  <div class="jumbotron" style="background-color:black;">
 
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: brown;
-    color: white;
-    text-align: center;
-  }
-</style>
+    <h1>FoodMood</h1>
+    <div class="nav">
+      <input id="cuisine" class="mr-4" type="text" placeholder="Cuisine Type" />
 
-<body>
-  <div id="map" style="width: 300px; height: 300px"></div>
+      <input id="address" class="mr-3" type="text" placeholder="Address" />
 
-  <div style="background:black" class="jumbotron m-0">
-    <div class="mt-5 text-color">
-      <h1 class="text-center" style="color: chartreuse;">FoodMood</h1>
+      <button id="search" class="btn btn-info">Submit</button>
     </div>
-    <div id="main">
-      <div class="row col-lg-12 style=margin:0px;height:15px;">
+  </div>
+  <!--This code based on example from https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h-->
 
-        <input id="Cuisine" class="mr-3" type="text" placeholder="Cuisine Type" />
+  <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+      </ol>
 
-        <input id="address" class="mr-3" type="text" placeholder="Address" />
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
 
-        <button id="search" class="btn btn-info">Submit</button>
-      </div>
-      <hr />
-
-      <!--This code based on example from https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h-->
-      <div class="container">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-
-            <div class="item active">
-              <img src="assets/images/italian.jpg" alt="Italian" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Italian</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/mexican1.jpg" alt="Mexican" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Mexican</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/chinese1.jpg" alt="Chinese" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Chinese</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/thai2.jpg" alt="Thai" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Thai</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/greek1.jpg" alt="Greek" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Greek</h1>
-              </div>
-            </div>
+        <div class="item active">
+          <img src="assets/images/italian.jpg" alt="Italian" style="width:100%;">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Italian</h1>
           </div>
-          <div>
+        </div>
+
+        <div class="item">
+          <img src="assets/images/mexican1.jpg" alt="Mexican" style="width:100%;">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Mexican</h1>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="assets/images/chinese1.jpg" alt="Chinese" style="width:100%;">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Chinese</h1>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="assets/images/thai1.jpg" alt="Thai" style="width:100%;">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Thai</h1>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="assets/images/greek1.jpg" alt="Greek" style="width:100%;">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Greek</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="result"></div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      <p>Super Pancake © 2019 Copyright</p>
+    </div>
 
 
-</body>
-
-<!-- Footer -->
-
-<div class="footer">
-  <p>Super Pancake © 2019 Copyright</p>
-</div>
-
+  </div>
 
 </html>
+
+</body>
