@@ -1,59 +1,59 @@
 $(document).ready(function () {
   L.mapquest.key = "oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
 
-  $("#search").on("click", function () {
-    
-    window.location.hash = '<a href="app.js';
+            $("#search").on("click", function() {
 
-    var address = $("#address").val();
+                window.location.hash = '<a href="app.js';
 
-    var cuisines = $('#cuisine').val();
+                  var address=$("#address").val();
+                
+                  var cuisines = $('#cuisine').val();
 
-    $("body").css('background', 'white')
+                  $("body").css('background','white')
 
-    $("#address").val("");
+                  $("#address").val("");
 
-    $("#cuisine").val("");
+                  $("#cuisine").val("");
+                  
+                  $(".carousel-inner").hide();
 
-    $(".carousel-inner").hide();
+                  $(".jumbotron m-0").css({ 'background-color':'none'});
 
-    $(".jumbotron m-0").css({ 'background-color': 'none' });
-
-    if (address === "" && cuisines === "") {
-      return;
-    }
-
-
-    /// --option two for zip-code vs logtide and  Latitude-----var url=" https://www.zipcodeapi.com/rest/<api_key>/info.<format>/<zip_code>/<units>",
-
-    CustomEvent = "";
+                  if(address===""& cuisines===""){
+                      return;
+            }
 
 
-    console.log(cuisines)
+            /// --option two for zip-code vs logtide and  Latitude-----var url=" https://www.zipcodeapi.com/rest/<api_key>/info.<format>/<zip_code>/<units>",
+
+            CustomEvent="";
 
 
-    console.log(address)
-
-    ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
-    var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" + address + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
-
-    $.ajax({
-      url: queryURL,
-      method: "get",
-      headers: {
-        'user-key': "967e2e08ce22588b1668ae3b432bf765",
-      }
-    })
-
-      .then(function (data) {
-
-        data = data.restaurants;
+            console.log(cuisines)
 
 
-        $.each(data, function (index, value) {
-          var res = data[index];
+            console.log(address )
 
-          $.each(res, function (index, value) {
+                        ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
+                        var queryURL="https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q="+address+"cuisines="+cuisines+"&apikey=967e2e08ce22588b1668ae3b432bf765"; 
+                                    
+                          $.ajax({
+                            url: queryURL,
+                            method: "get",
+                            headers: {
+                              'user-key':"967e2e08ce22588b1668ae3b432bf765",
+                              }
+                          })
+
+             .then( function(data) {
+                        
+                   data = data.restaurants;
+                        var result = "";
+                        
+                            $.each(data, function(index, value) {
+                              var res = data[index];
+
+                                  $.each(res, function(index, value) {
 
             var location = res.restaurant.location;
 
@@ -61,14 +61,15 @@ $(document).ready(function () {
 
             var result = "";
 
-            /*result += "<div class='dataImg'>";
-              result += "</div>";result += "<img class='rest-img' alt='coming soon'src=" + value.thumb + " >"+*/
+            result += "<div class='dataImg'>";
+                                    
+            result += "</div>";
 
             result += "<h2>" + value.name + "</h2>" + "<h6>" + location.address + "</h6>" + "<h4>" + "Cuisines: " + value.cuisines + "</h4>";
 
             result += "<h7>" + value.phone_numbers + "</h7>";
 
-            result += "<br /><br /><a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
+            result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
 
             var newRow = $("<div>");
 
