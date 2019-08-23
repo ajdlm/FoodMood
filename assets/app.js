@@ -1,5 +1,6 @@
-$(document).ready(function() {
-  
+$(document).ready(function () {
+  L.mapquest.key = "oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+
             $("#search").on("click", function() {
 
                 window.location.hash = '<a href="app.js';
@@ -54,16 +55,59 @@ $(document).ready(function() {
 
                                   $.each(res, function(index, value) {
 
-                                            var location = res.restaurant.location;
-                                                result += "<div class='dataImg'>";
-                                                  result += "</div>";result += "<img class='rest-img' alt='coming soon'src=" + value.thumb + " >"+  "<h2>" + value.name + "</h2>"+ "<h6>" + location.address + "</h6>"+"<h4>"+"Cuisines: "+ value.cuisines+"</h4>";  result += "<div>"; 
-                                                  result +="<h7>"+value.phone_numbers+""+"</h7>";"<div>"+"</div>"; result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" +"Menu" + "</strong></a>"+"<hr/><dv>"                              
-                                              });
+            var location = res.restaurant.location;
 
-                                       });
-                     $(".result").html(result+"test/ok");
-                            console.log(result)
-                   });
-                      
-              });
-    });
+            console.log(location);
+
+            var result = "";
+
+            result += "<div class='dataImg'>";
+                                    
+            result += "</div>";
+
+            result += "<h2>" + value.name + "</h2>" + "<h6>" + location.address + "</h6>" + "<h4>" + "Cuisines: " + value.cuisines + "</h4>";
+
+            result += "<h7>" + value.phone_numbers + "</h7>";
+
+            result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
+
+            var newRow = $("<div>");
+
+            var columnOne = $("<div>");
+
+            var columnTwo = $("<div>");
+
+            var columnThree = $("<div>");
+
+            newRow.addClass("row");
+
+            var foodImage = $("<img>");
+
+            foodImage.attr("alt", "'coming soon'").attr("src", value.thumb).addClass("rest-img");
+
+            columnOne.addClass("col-md-3").append(foodImage);
+
+            columnTwo.addClass("col-md-6").html(result);
+
+            var currentLocation = address.replace(/ /g, "+");
+
+            var destinationAddress = location.address;
+
+            destinationAddress = destinationAddress.replace(/ /g, "+");
+
+            var mapImage = $("<img>");
+
+            var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+
+            mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px");
+
+            columnThree.addClass("col-md-3").append(mapImage);
+
+            newRow.append(columnOne, columnTwo, columnThree);
+
+            $(".result").append(newRow, "<br />", "<hr />", "<br />");
+          });
+        });
+      });
+  });
+});
