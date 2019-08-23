@@ -1,6 +1,12 @@
 $(document).ready(function () {
   L.mapquest.key = "oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
 
+  $("#cuisine, #address").keyup(function (event) {
+    if (event.keyCode === 13) {
+        $("#search").click();
+    };
+});
+
   $("#search").on("click", function () {
 
     window.location.hash = '<a href="app.js';
