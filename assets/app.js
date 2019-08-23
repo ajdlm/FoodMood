@@ -1,69 +1,133 @@
-$(document).ready(function() {
-  
-            $("#search").on("click", function() {
+$(document).ready(function () {
+  L.mapquest.key = "oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
 
-                window.location.hash = '<a href="app.js';
+  $("#cuisine, #address").keyup(function (event) {
+    if (event.keyCode === 13) {
+        $("#search").click();
+    };
+});
 
-                  var address=$("#address").val();
-                
-                  var cuisines = $('#cuisine').val();
+  $("#search").on("click", function () {
 
-                  $("body").css('background','white')
+    window.location.hash = '<a href="app.js';
 
-                  $("#address").val("");
+    var address = $("#address").val();
 
-                  $("#cuisine").val("");
-                  
-                  $(".carousel-inner").hide();
+    var cuisines = $('#cuisine').val();
 
-                  $(".jumbotron m-0").css({ 'background-color':'none'});
+    $("body").css('background', 'white')
 
-                  if(address===""& cuisines===""){
-                      return;
-            }
+    $("#address").val("");
+
+    $("#cuisine").val("");
+
+    $(".carousel-inner").hide();
+
+    $(".jumbotron m-0").css({ 'background-color': 'none' });
+
+    if (address === "" & cuisines === "") {
+      return;
+    }
+
+    var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy&location=" + address;
+
+    $.ajax({
+      url: longLatQueryURL,
+      method: "GET"
+    })
+      .then(function (response) {
+        var addressLatitude = response.results[0].locations[0].latLng.lat;
+
+        var addressLongitude = response.results[0].locations[0].latLng.lng;
+
+        console.log("lat = " + addressLatitude + " while long = " + addressLongitude);
 
 
-            /// --option two for zip-code vs logtide and  Latitude-----var url=" https://www.zipcodeapi.com/rest/<api_key>/info.<format>/<zip_code>/<units>",
+        /// --option two for zip-code vs logtide and  Latitude-----var url=" https://www.zipcodeapi.com/rest/<api_key>/info.<format>/<zip_code>/<units>",
 
-            CustomEvent="";
-
-
-            console.log(cuisines)
+        CustomEvent = "";
 
 
-            console.log(address )
+        console.log(cuisines)
 
-                        ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
-                        var queryURL="https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q="+address+"cuisines="+cuisines+"&apikey=967e2e08ce22588b1668ae3b432bf765"; 
-                                    
-                          $.ajax({
-                            url: queryURL,
-                            method: "get",
-                            headers: {
-                              'user-key':"967e2e08ce22588b1668ae3b432bf765",
-                              }
-                          })
 
-             .then( function(data) {
-                        
-                   data = data.restaurants;
-                        var result = "";
-                        
-                            $.each(data, function(index, value) {
-                              var res = data[index];
+        console.log(address)
 
-                                  $.each(res, function(index, value) {
+        ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" + address + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
 
-                                            var location = res.restaurant.location;
-                                                result += "<div class='dataImg'>";
-                                                  result += "</div>";result += "<img class='rest-img' alt='coming soon'src=" + value.thumb + " >"+  "<h2>" + value.name + "</h2>"+ "<h6>" + location.address + "</h6>"+"<h4>"+"Cuisines: "+ value.cuisines+"</h4>";  result += "<div>"; 
-                                                  result +="<h7>"+value.phone_numbers+""+"</h7>";"<div>"+"</div>"; result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" +"Menu" + "</strong></a>"+"<hr/><dv>"                              
-                                              });
+        $.ajax({
+          url: queryURL,
+          method: "get",
+          headers: {
+            'user-key': "967e2e08ce22588b1668ae3b432bf765",
+          }
+        })
 
-                                       });
-                     $(".result").html(result+"test/ok");
-                            console.log(result)
-                   });
-                      
+          .then(function (data) {
+
+            data = data.restaurants;
+            var result = "";
+
+            $.each(data, function (index, value) {
+              var res = data[index];
+
+              $.each(res, function (index, value) {
+
+                var location = res.restaurant.location;
+
+                console.log(location);
+
+                var result = "";
+
+                result += "<div class='dataImg'>";
+
+                result += "</div>";
+
+                result += "<h2>" + value.name + "</h2>" + "<h6>" + location.address + "</h6>" + "<h4>" + "Cuisines: " + value.cuisines + "</h4>";
+
+                result += "<h7>" + value.phone_numbers + "</h7>";
+
+                result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
+
+                var newRow = $("<div>");
+
+                var columnOne = $("<div>");
+
+                var columnTwo = $("<div>");
+
+                var columnThree = $("<div>");
+
+                newRow.addClass("row");
+
+                var foodImage = $("<img>");
+
+                foodImage.attr("alt", "'coming soon'").attr("src", value.thumb).addClass("rest-img");
+
+                columnOne.addClass("col-md-3").append(foodImage);
+
+                columnTwo.addClass("col-md-6").html(result);
+
+                var currentLocation = address.replace(/ /g, "+");
+
+                var destinationAddress = location.address;
+
+                destinationAddress = destinationAddress.replace(/ /g, "+");
+
+                var mapImage = $("<img>");
+
+                var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+
+                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px");
+
+                columnThree.addClass("col-md-3").append(mapImage);
+
+                newRow.append(columnOne, columnTwo, columnThree);
+
+                $(".result").append(newRow, "<br />", "<hr />", "<br />");
               });
-    });
+            });
+          });
+      });
+  });
+});
