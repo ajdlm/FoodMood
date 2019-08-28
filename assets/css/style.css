@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Pacifico&display=swap');
+
 body {
      grid-template-rows: auto;
     float:center;
@@ -21,7 +23,7 @@ body {
   }
 
 
-
+/*
   h1{
     
     font-size: 12em;
@@ -36,6 +38,27 @@ body {
     font-family: 'Special Elite', cursive;
     
 
+}
+*/
+
+.food-mood{
+  float: left;
+  font-family: 'Fugaz One';
+  color: white !important;
+}
+
+.sounds-good{
+  float: left;
+  font-family: 'Fugaz One';
+  color: #333333;
+  vertical-align: text-bottom; /* Doesn't work */
+}
+
+.cuisine-name {
+  font-family: 'Pacifico';
+  font-size: 200px;
+  color: white;
+  vertical-align: center; /* Doesn't work */
 }
 
   #cuisine,
@@ -64,7 +87,7 @@ margin-bottom: 5px;
       position:fixed;
       top:0px;
  padding-left:25px;
- color:blue;
+ /*color:blue;*/
  left: 0px;
  height: 20%;
  width:100%;
@@ -95,10 +118,13 @@ margin-bottom: 5px;
     padding: 15px;
     bottom: 0;
     width: 100%;
-    background-color: brown;
+    background-color: #333333;
     color: white;
     text-align: center;
+    font-family: 'Fugaz One';
   }
+
+  /* Responsive Media Settings */
 
   @media only screen and (max-width: 600px) {
     body {
@@ -161,7 +187,7 @@ margin-bottom: 5px;
           position:fixed;
           top:0px;
      padding-left:25px;
-     color:blue;
+     /*color:blue;*/
      left: 0px;
      height:165px;
         width:100%;
