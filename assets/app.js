@@ -1,5 +1,8 @@
 $(document).ready(function () {
-  L.mapquest.key = "oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+
+  $("#newSearch").hide();
+
+  L.mapquest.key = "x4MDUAVZXxsVUQxn9e6yLgY9NetpHoNe";
 
   $("#cuisine, #address").keyup(function (event) {
     if (event.keyCode === 13) {
@@ -17,11 +20,17 @@ $(document).ready(function () {
 
     $("body").css('background', 'white')
 
-    $("#address").val("");
+    $("#address").hide();
 
-    $("#cuisine").val("");
+    $("#cuisine").hide();
+
+    $("#search").hide();
+
+    $("#newSearch").show();
 
     $(".carousel-inner").hide();
+
+   
 
     $(".jumbotron m-0").css({ 'background-color': 'none' });
 
@@ -29,7 +38,13 @@ $(document).ready(function () {
       return;
     }
 
-    var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy&location=" + address;
+    $("#newSearch").on("click",function(){
+
+      location.reload();
+  })
+
+
+    var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=x4MDUAVZXxsVUQxn9e6yLgY9NetpHoNe&location=" + address;
 
     $.ajax({
       url: longLatQueryURL,
@@ -53,9 +68,9 @@ $(document).ready(function () {
 
         console.log(address)
 
+        ///..."https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" +addressLatitude + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
         ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" + address + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
-
+        var queryURL ="https://developers.zomato.com/api/v2.1/search?lat="+addressLatitude+"&lon="+addressLongitude+"&q="+cuisines+"&sort=rating"+ "&apikey=967e2e08ce22588b1668ae3b432bf765";
         $.ajax({
           url: queryURL,
           method: "get",
@@ -76,7 +91,9 @@ $(document).ready(function () {
 
                 var location = res.restaurant.location;
 
-                console.log(location);
+                var userRating = res.restaurant.user_rating;
+
+                console.log(location);               
 
                 var result = "";
 
@@ -84,9 +101,13 @@ $(document).ready(function () {
 
                 result += "</div>";
 
-                result += "<h2>" + value.name + "</h2>" + "<h6>" + location.address + "</h6>" + "<h4>" + "Cuisines: " + value.cuisines + "</h4>";
+                result += "<p " + "<strong>" + userRating.aggregate_rating+"<h7>"+"/5.0"+"</h7>"+ "</strong></p><br>";
+                                          
+                result += "<a href=" + value.url+" target='_blank' class='action_link'>"+"<h2>" + value.name + "</strong></h2></a>";
 
-                result += "<h7>" + value.phone_numbers + "</h7>";
+                result += "<h4>" +'<strong>'+"Cuisines: "+'</strong>' + value.cuisines + "</h4>"+"<h6>" + location.address + "</h6>" ;
+
+                result += "<h7>" + value.phone_numbers + "</h7>";              
 
                 result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
 
@@ -116,7 +137,7 @@ $(document).ready(function () {
 
                 var mapImage = $("<img>");
 
-                var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+                var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=x4MDUAVZXxsVUQxn9e6yLgY9NetpHoNe";
 
                 mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px");
 
@@ -124,7 +145,7 @@ $(document).ready(function () {
 
                 newRow.append(columnOne, columnTwo, columnThree);
 
-                $(".result").append(newRow, "<br />", "<hr />", "<br />");
+                $(".result").append(newRow, "<hr size='330'>");
               });
             });
           });

@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Super Pancake</title>
-
-  <meta charset="UTF-8">
-
-  <!--ajax link-->
+<head><!--ajax link-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <script src="assets/app.js"></script>
@@ -27,11 +22,14 @@
   <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>Super Pancake</title>
+
 </head>
 
 <body style="background-color:black;">
 
-  <div  class="jumbotron" style="background-color:black;">
+  <div  class="jumbotron"style="background-color:black;">
   
       <h1>FoodMood</h1>
   <div class="nav">
@@ -40,6 +38,10 @@
                 <input id="address" class="mr-3" type="text" placeholder="Address" />
 
                  <button id="search" class="btn btn-info">Submit</button>
+
+                  <button id="newSearch" class="btn btn-info">New search</button>
+
+                 
       </div>
     </div>
   <!--This code based on example from https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h-->
@@ -92,15 +94,22 @@
                                     <h1 class="cuisine-name">Greek</h1>
                                   </div>
                             </div>
+
+
+
+
                  </div>
                  
                       <div class="result"></div>
             </div>            
                                <!-- Footer -->
                           <div class="footer">
-                              <p>Super Pancake © 2019 Copyright</p>
+                              Super Pancake © 2019 Copyright
+                          </div>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <script src="assets/app.js"></script>
       </div>
-     </div>
-  </html>
     
 </body>
+</html>
