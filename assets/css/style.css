@@ -38,6 +38,14 @@ body {
 
 }
 
+#mapGoesHere {
+  height: 500px;
+}
+
+.mapImage {
+  cursor: pointer;
+}
+
   #cuisine,
   .mr-3{
 height:28px;
@@ -204,7 +212,3 @@ margin:50px;
 background-blend-mode: color;
 
   }
-
-
-
-  

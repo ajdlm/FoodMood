@@ -1,21 +1,29 @@
 $(document).ready(function () {
-  L.mapquest.key = "oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+  var mapQuestKey = "x4MDUAVZXxsVUQxn9e6yLgY9NetpHoNe";
+
+  var address;
+
+  var addressLatitude;
+
+  var addressLongitude;
+
+  L.mapquest.key = mapQuestKey;
 
   $("#cuisine, #address").keyup(function (event) {
     if (event.keyCode === 13) {
-        $("#search").click();
+      $("#search").click();
     };
-});
+  });
 
   $("#search").on("click", function () {
 
     window.location.hash = '<a href="app.js';
 
-    var address = $("#address").val();
+    address = $("#address").val();
 
     var cuisines = $('#cuisine').val();
 
-    $("body").css('background', 'white')
+    $("body").css('background', 'white');
 
     $("#address").val("");
 
@@ -29,16 +37,16 @@ $(document).ready(function () {
       return;
     }
 
-    var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy&location=" + address;
+    var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=" + mapQuestKey + "&location=" + address;
 
     $.ajax({
       url: longLatQueryURL,
       method: "GET"
     })
       .then(function (response) {
-        var addressLatitude = response.results[0].locations[0].latLng.lat;
+        addressLatitude = response.results[0].locations[0].latLng.lat;
 
-        var addressLongitude = response.results[0].locations[0].latLng.lng;
+        addressLongitude = response.results[0].locations[0].latLng.lng;
 
         console.log("lat = " + addressLatitude + " while long = " + addressLongitude);
 
@@ -48,10 +56,10 @@ $(document).ready(function () {
         CustomEvent = "";
 
 
-        console.log(cuisines)
+        console.log(cuisines);
 
 
-        console.log(address)
+        console.log(address);
 
         ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
         var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" + address + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
@@ -116,11 +124,15 @@ $(document).ready(function () {
 
                 var mapImage = $("<img>");
 
-                var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=oSQY9xA7Ob4RJhEoBckcPrm67xWsMGjy";
+                var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=" + mapQuestKey;
 
-                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px");
+                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px").addClass("mapImage").attr("restAddress", location.address).attr("restName", value.name);
 
-                columnThree.addClass("col-md-3").append(mapImage);
+                var mapInstruct = $("<h2>");
+
+                mapInstruct.text("Click for Interactive Map").addClass("mapImage").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0");
+
+                columnThree.addClass("col-md-3").addClass("mapColumn").append(mapImage, mapInstruct);
 
                 newRow.append(columnOne, columnTwo, columnThree);
 
@@ -128,6 +140,49 @@ $(document).ready(function () {
               });
             });
           });
+      });
+  });
+
+  $(".result").on("click", ".mapImage", function (event) {
+    var currentRestaurant = $(this).attr("restName");
+
+    $("#interactiveMapHeader").text("Map to " + currentRestaurant);
+
+    $("#interactiveMap").modal("show");
+
+    console.log(this);
+
+    var endAddress = $(this).attr("restAddress");
+
+    var targetLatLongQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=" + mapQuestKey + "&location=" + endAddress;
+
+    $.ajax({
+      url: targetLatLongQueryURL,
+      method: "GET"
+    })
+      .then(function (response) {
+        var computeLatitude = response.results[0].locations[0].latLng.lat;
+
+        var computeLongitude = response.results[0].locations[0].latLng.lng;
+
+        computeLatitude += addressLatitude;
+
+        computeLatitude = computeLatitude / 2;
+
+        computeLongitude += addressLongitude;
+
+        computeLongitude = computeLongitude / 2;
+
+        L.mapquest.map("mapGoesHere", {
+          center: [computeLatitude, computeLongitude],
+          layers: L.mapquest.tileLayer("map"),
+          zoom: 12
+        });
+
+        L.mapquest.directions().route({
+          start: address,
+          end: endAddress
+        });
       });
   });
 });
