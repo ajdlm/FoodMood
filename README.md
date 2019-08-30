@@ -38,7 +38,9 @@ AJAX
 <br>
 
 <h5>New Technology Used</h5>
-(Under construction)
+MapQuest.js
+<br>
+Leaflet.js
 
 <h5>API's Used</h5>
 Zomato

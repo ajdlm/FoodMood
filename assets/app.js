@@ -1,11 +1,9 @@
 $(document).ready(function () {
-  var mapQuestKey = "x4MDUAVZXxsVUQxn9e6yLgY9NetpHoNe";
+  var mapQuestKey = "wUnd0Bo4VFnAAn1TbHBgyoaEY3vhgkD6";
 
-  var address;
+  var mapGenerated = false;
 
-  var addressLatitude;
-
-  var addressLongitude;
+  var address, addressLatitude, addressLongitude, mapVar;
 
   L.mapquest.key = mapQuestKey;
 
@@ -25,11 +23,9 @@ $(document).ready(function () {
 
     $("body").css('background', 'white');
 
-    $("#address").val("");
-
-    $("#cuisine").val("");
-
     $(".carousel-inner").hide();
+
+
 
     $(".jumbotron m-0").css({ 'background-color': 'none' });
 
@@ -38,6 +34,8 @@ $(document).ready(function () {
     }
 
     var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=" + mapQuestKey + "&location=" + address;
+
+    // location.reload() for changing pages?
 
     $.ajax({
       url: longLatQueryURL,
@@ -61,9 +59,9 @@ $(document).ready(function () {
 
         console.log(address);
 
+        ///..."https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" +addressLatitude + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
         ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" + address + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
-
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?lat=" + addressLatitude + "&lon=" + addressLongitude + "&q=" + cuisines + "&sort=rating" + "&apikey=967e2e08ce22588b1668ae3b432bf765";
         $.ajax({
           url: queryURL,
           method: "get",
@@ -75,7 +73,10 @@ $(document).ready(function () {
           .then(function (data) {
 
             data = data.restaurants;
+
             var result = "";
+
+            $(".result").empty();
 
             $.each(data, function (index, value) {
               var res = data[index];
@@ -83,6 +84,8 @@ $(document).ready(function () {
               $.each(res, function (index, value) {
 
                 var location = res.restaurant.location;
+
+                var userRating = res.restaurant.user_rating;
 
                 console.log(location);
 
@@ -92,7 +95,11 @@ $(document).ready(function () {
 
                 result += "</div>";
 
-                result += "<h2>" + value.name + "</h2>" + "<h6>" + location.address + "</h6>" + "<h4>" + "Cuisines: " + value.cuisines + "</h4>";
+                result += "<p " + "<strong>" + userRating.aggregate_rating + "<h7>" + "/5.0" + "</h7>" + "</strong></p><br>";
+
+                result += "<a href=" + value.url + " target='_blank' class='action_link'>" + "<h2>" + value.name + "</strong></h2></a>";
+
+                result += "<h4>" + '<strong>' + "Cuisines: " + '</strong>' + value.cuisines + "</h4>" + "<h6>" + location.address + "</h6>";
 
                 result += "<h7>" + value.phone_numbers + "</h7>";
 
@@ -136,7 +143,7 @@ $(document).ready(function () {
 
                 newRow.append(columnOne, columnTwo, columnThree);
 
-                $(".result").append(newRow, "<br />", "<hr />", "<br />");
+                $(".result").append(newRow, "<hr size='330'>");
               });
             });
           });
@@ -173,7 +180,15 @@ $(document).ready(function () {
 
         computeLongitude = computeLongitude / 2;
 
-        L.mapquest.map("mapGoesHere", {
+        if (mapGenerated) {
+          mapVar.remove();
+        }
+
+        else if (!mapGenerated) {
+          mapGenerated = true;
+        };
+
+        mapVar = L.mapquest.map("mapGoesHere", {
           center: [computeLatitude, computeLongitude],
           layers: L.mapquest.tileLayer("map"),
           zoom: 12
@@ -181,7 +196,7 @@ $(document).ready(function () {
 
         L.mapquest.directions().route({
           start: address,
-          end: endAddress
+          end: endAddress,
         });
       });
   });
