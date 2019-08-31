@@ -41,24 +41,25 @@ body {
 }
 */
 
-.food-mood{
+.food-mood{ /* MJ */
+  font-size: 70px;
   float: left;
   font-family: 'Fugaz One';
-  color: white !important;
+  color: orangered !important;
+  margin-left: 90px;
 }
 
-.sounds-good{
+.sounds-good{ /* MJ */
   float: left;
   font-family: 'Fugaz One';
-  color: #333333;
-  vertical-align: text-bottom; /* Doesn't work */
+  color: white;
+  margin-right: 20px;
 }
 
-.cuisine-name {
+.cuisine-name { /* MJ */
   font-family: 'Pacifico';
   font-size: 200px;
   color: white;
-  vertical-align: center; /* Doesn't work */
 }
 
   #cuisine,
@@ -104,15 +105,30 @@ margin-bottom: 5px;
   .result{
   margin-top:150px;
 
+  /* Carousel Start */
+
+  .carousel-item .img-fluid {
+    width: 100%;
+    height: 100%;
+    /*height: 100vh;*/ /* vh = vertical height at 100%, fills out entire browser window */
   }
+
+  /*}
   #myCarousel{
   height:50%;
   width:65%;
   margin-left:150px;
   margin-top:120px;
-  }
+  }*/
 
-  .footer {
+  /* Carousel End */
+
+footer {
+  background-color: #000000 !important;
+}
+
+/*
+  .footer { /* MJ */
     position: fixed;
     left: 0;
     padding: 15px;
@@ -123,6 +139,8 @@ margin-bottom: 5px;
     text-align: center;
     font-family: 'Fugaz One';
   }
+  */
+
 
   /* Responsive Media Settings */
 

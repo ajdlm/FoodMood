@@ -6,122 +6,113 @@
 
   <meta charset="UTF-8">
 
-  <!--ajax link-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <script src="assets/app.js"></script>
-
-  <!--google fonts css-->
-  <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
-
-  <!--These links make the carousel work! (https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h)-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
   <!--style sheet link-->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-
-  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+  <!--Bootstrap 4 (copied directly from Bootstrap website)-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-  <!-- Start of HEADER Section -->
+<body>
 
-<body style="background-color:black;">
+<!-- Start of HEADER Section -->
 
-  <div class="jumbotron" style="background-color:black;">
+<div class="jumbotron" style="background-color:black;">
     <div>
-    <h1 class="food-mood">FoodMood</h1>
-    <h4 class="sounds-good">What sounds good to you?</h4>
+      <h1 class="food-mood">FoodMood</h1>
     </div>
     <div class="nav">
+      <h4 class="sounds-good">What sounds good to you?</h4>
       <input id="cuisine" class="mr-4" type="text" placeholder="Cuisine Type" />
-
       <input id="address" class="mr-3" type="text" placeholder="Address" />
-
       <button id="search" class="btn btn-info">Submit</button>
     </div>
-  </div>
+</div>
 
-  <!-- End of HEADER Section -->
+<!-- End of HEADER Section -->
+
+
 
   <!-- Start of CAROUSEL Section -->
-
-  <!--This code based on example from https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h-->
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-
-            <div class="item active">
-              <img src="assets/images/italian.jpg" alt="Italian" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Italian</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/mexican1.jpg" alt="Mexican" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Mexican</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/chinese1.jpg" alt="Chinese" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Chinese</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/thai1.jpg" alt="Thai" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Thai</h1>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="assets/images/greek1.jpg" alt="Greek" style="width:100%;">
-              <div class="carousel-caption">
-                <h1 class="cuisine-name">Greek</h1>
-              </div>
-            </div>
+  <section>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="assets/images/italian.jpg" alt="First slide">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Italian</h1>
           </div>
-
-          <div class="result"></div>
         </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/mexican.jpg" alt="Second slide">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Mexican</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/chinese.jpg" alt="Third slide">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Chinese</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/thai.jpg" alt="Fourth slide">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Thai</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/indian.jpg" alt="Fifth slide">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Indian</h1>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="assets/images/greek.jpg" alt="Fifth slide">
+          <div class="carousel-caption">
+            <h1 class="cuisine-name">Greek</h1>
+          </div>
+        </div>
+      
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-  </div>
-
+  </section>
 <!-- End of CAROUSEL Section -->
 
 <!-- Start of FOOTER Section -->
 
-        <div class="footer">
-          <p>Super Pancake © 2019 Copyright</p>
-        </div>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>Copyright © 2019 Super Pancake</small>
+  </div>
+</footer>
 
 <!-- End of FOOTER Section -->
 
-
-</html>
+<!--Carousel component requires these JavaScript links, placed near the end before closing body tag-->
+<!--jQuery first, then Popper.js, then Bootstrap JS-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
+
+</html>
