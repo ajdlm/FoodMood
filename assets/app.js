@@ -1,8 +1,6 @@
 $(document).ready(function () {
   var mapQuestKey = "wUnd0Bo4VFnAAn1TbHBgyoaEY3vhgkD6";
 
-  var mapGenerated = false;
-
   var address, addressLatitude, addressLongitude, mapVar;
 
   L.mapquest.key = mapQuestKey;
@@ -24,8 +22,6 @@ $(document).ready(function () {
     $("body").css('background', 'white');
 
     $(".carousel-inner").hide();
-
-
 
     $(".jumbotron m-0").css({ 'background-color': 'none' });
 
@@ -180,13 +176,9 @@ $(document).ready(function () {
 
         computeLongitude = computeLongitude / 2;
 
-        if (mapGenerated) {
+        if (mapVar) {
           mapVar.remove();
         }
-
-        else if (!mapGenerated) {
-          mapGenerated = true;
-        };
 
         mapVar = L.mapquest.map("mapGoesHere", {
           center: [computeLatitude, computeLongitude],
@@ -194,10 +186,36 @@ $(document).ready(function () {
           zoom: 12
         });
 
-        L.mapquest.directions().route({
-          start: address,
-          end: endAddress,
+        var directions = L.mapquest.directions();
+
+        directions.setLayerOptions({
+          startMarker: {
+            icon: "marker",
+            iconOptions: {
+              size: "md",
+              primaryColor: "#000000",
+              secondaryColor: "#008000",
+              symbol: "A"
+            }
+          },
+
+          endMarker: {
+            icon: "marker",
+            iconOptions: {
+              size: "md",
+              primaryColor: "#000000",
+              secondaryColor: "#ff4500",
+              symbol: "B"
+            }
+          }
         });
+
+        directions.route({
+          start: address,
+          end: endAddress
+        });
+
+        mapVar.addControl(L.mapquest.control());
       });
   });
 });
