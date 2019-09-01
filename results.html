@@ -2,30 +2,33 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--bootstrap cdn-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <!--google fonts css-->
-        <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
-        <!--ajax link-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <!--style sheet link-->
-        <link rel="stylesheet" type="text/css" href="style.css">
+  <!--ajax link-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+  <!--google fonts css-->
+  <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
-        <script src="app.js"></script>
+  <!--These links make the carousel work! (https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_carousel2&stacked=h)-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-        <title>Super Pancake</title>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!--Bootstrap 4 CSS file-->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!--style sheet link-->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FoodMood</title>
 </head>
 
 <style>
@@ -41,24 +44,49 @@
 </style>
 
 <body>
-                <div style="background:skyblue" class="jumbotron m-0">
-                        <div class="mt-5 text-color">
-                                <h1 class="text-center" style="color:red;">Results</h1>
+        <div style="background:skyblue" class="jumbotron m-0">
+                <div class="mt-5 text-color">
+                        <h1 class="text-center" style="color:red;">Results</h1>
+                </div>
+                <div id="results">
+                        <div class="row col-lg-12 style=margin:0px;height:15px;">
+
+                                <input id="cuisine" class="mr-3" type="text" placeholder="Cuisine Type" />
+
+                                <input id="address" class="mr-3" type="text" placeholder="Address" />
+
+                                <button id="search" class="btn btn-info">Submit</button>
                         </div>
-                        <div id="results">
-                                <div class="row col-lg-12 style=margin:0px;height:15px;">
+                        <hr />
 
-                                        <input id="cuisineResults" class="mr-3" type="text" placeholder="Cuisine Type" />
+                </div>
 
-                                        <input id="addressResults" class="mr-3" type="text" placeholder="Address" />
+        </div>
 
-                                        <button id="searchResults" class="btn btn-info">Submit</button>
+        <div class="result"></div>
+
+        <div class="modal" id="interactiveMap" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                                <div id="interactiveMapHeader" class="modal-header">
+                                        <h2 class="modal-title text-white" id="modalTitle"></h2>
+                                        <button type="button" class="close text-white" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
                                 </div>
-                                <hr />
 
+                                <div class="modal-body" id="mapGoesHere"></div>
+
+                                <div class="modal-footer" id="interactiveMapFooter">
+                                        <button type="button" class="btn text-white" id="mapClose"
+                                                data-dismiss="modal">Close</button>
+                                </div>
                         </div>
+                </div>
+        </div>
 
-                                </div>
+        <script src="assets/app.js"></script>
 </body>
 
 <!-- Footer -->
