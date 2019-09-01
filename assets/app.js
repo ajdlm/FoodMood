@@ -132,13 +132,17 @@ $(document).ready(function () {
 
                 var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=" + mapQuestKey;
 
-                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px").addClass("mapImage").attr("restAddress", location.address).attr("restName", value.name).addClass("float-right");
+                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px").addClass("mapImage").attr("restAddress", location.address).attr("restName", value.name);
 
                 var mapInstruct = $("<h2>");
 
-                mapInstruct.text("Click for Interactive Map").addClass("mapImage float-right").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0").addClass("text-right");
+                mapInstruct.text("Click for Interactive Map").addClass("mapImage").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0");
 
-                columnThree.addClass("col-md-3").addClass("mapColumn").append(mapImage, mapInstruct);
+                var floatingDiv = $("<div>");
+
+                floatingDiv.addClass("float-right").css("width", "200px").append(mapImage, mapInstruct);
+
+                columnThree.addClass("col-md-3").addClass("mapColumn").append(floatingDiv);
 
                 newRow.append(columnOne, columnTwo, columnThree);
 
