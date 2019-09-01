@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   $("#search").on("click", function () {
 
-    window.location.hash = '<a href=results';
+    window.location.hash = "results";
 
     address = $("#address").val();
 
@@ -26,6 +26,10 @@ $(document).ready(function () {
     $(".result").removeClass("d-none");
 
     $(".jumbotron m-0").css({ 'background-color': 'none' });
+
+    $("#cuisine").val("");
+
+    $("#address").val("");
 
     if (address === "" & cuisines === "") {
       return;
@@ -80,6 +84,8 @@ $(document).ready(function () {
             $.each(data, function (index, value) {
               var res = data[index];
 
+              var parsingNow = index;
+
               $.each(res, function (index, value) {
 
                 var location = res.restaurant.location;
@@ -94,13 +100,13 @@ $(document).ready(function () {
 
                 result += "</div>";
 
-                result += "<p " + "<strong>" + userRating.aggregate_rating + "<h7>" + "/5.0" + "</h7>" + "</strong></p><br>";
+                result += "<p class='ratingText'>" + "<strong>" + userRating.aggregate_rating + "<span class='resultText'>" + "/5.0" + "</span>" + "</strong></p><br>";
 
                 result += "<a href=" + value.url + " target='_blank' class='action_link'>" + "<h2>" + value.name + "</strong></h2></a>";
 
                 result += "<h4>" + '<strong>' + "Cuisines: " + '</strong>' + value.cuisines + "</h4>" + "<h6>" + location.address + "</h6>";
 
-                result += "<h7>" + value.phone_numbers + "</h7>";
+                result += "<p class='resultText d-inline'>" + value.phone_numbers + "</p>";
 
                 result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
 
@@ -116,7 +122,17 @@ $(document).ready(function () {
 
                 var foodImage = $("<img>");
 
+                console.log(value);
+
                 foodImage.attr("alt", "'coming soon'").attr("src", value.thumb).addClass("rest-img");
+
+                if (value.thumb === "") {
+                  foodImage.attr("src", "assets/images/no-image-available.png").attr("height", "200px").attr("width", "200px").css("background", "#aaaaaa");
+                }
+
+                else {
+                  foodImage.attr("src", value.thumb);
+                };
 
                 columnOne.addClass("col-md-3").append(foodImage);
 
@@ -146,7 +162,13 @@ $(document).ready(function () {
 
                 newRow.append(columnOne, columnTwo, columnThree);
 
-                $(".result").append(newRow, "<hr size='330'>");
+                if (parsingNow === (data.length - 1)) {
+                  $(".result").append(newRow)
+                }
+
+                else {
+                  $(".result").append(newRow, "<hr size='330'>");
+                };
               });
             });
           });
