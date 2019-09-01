@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     $("body").css('background', 'white');
 
-    $(".carousel-inner").hide();
+    $("#carouselExampleIndicators").hide();
 
     $(".result").removeClass("d-none");
 
