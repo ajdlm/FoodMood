@@ -51,6 +51,12 @@ body {
   color: orangered !important;
 }
 
+.modal-title {
+  color: black;
+  font-family: 'Fugaz One';
+  font-size: 22px;
+}
+
 .sounds-good{ /* MJ */
   /*float: left;*/
   font-family: 'Fugaz One';
@@ -90,8 +96,8 @@ margin-bottom: 5px;
 
   }
 
-  #mapClose {
-    background: orangered;
+  .popupClose {
+    background: orangered !important;
   }
   
   .container{
