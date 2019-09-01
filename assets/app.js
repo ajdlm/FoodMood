@@ -1,6 +1,8 @@
 $(document).ready(function () {
   var mapQuestKey = "wUnd0Bo4VFnAAn1TbHBgyoaEY3vhgkD6";
 
+  //var mapQuestKey = "jZh3b Axg3v1iflCQUxzPDHK0HMxOxAgF";
+
   var address, addressLatitude, addressLongitude, mapVar;
 
   L.mapquest.key = mapQuestKey;
@@ -13,11 +15,17 @@ $(document).ready(function () {
 
   $("#search").on("click", function () {
 
+    address = $("#address").val().trim();
+
+    var cuisines = $('#cuisine').val().trim();
+    
+    if (address === "") {
+      $("#badInput").modal("show");
+
+      return;
+    };
+
     window.location.hash = "results";
-
-    address = $("#address").val();
-
-    var cuisines = $('#cuisine').val();
 
     $("body").css('background', 'white');
 
@@ -30,10 +38,6 @@ $(document).ready(function () {
     $("#cuisine").val("");
 
     $("#address").val("");
-
-    if (address === "" & cuisines === "") {
-      return;
-    }
 
     var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=" + mapQuestKey + "&location=" + address;
 
@@ -178,7 +182,7 @@ $(document).ready(function () {
   $(".result").on("click", ".mapImage", function (event) {
     var currentRestaurant = $(this).attr("restName");
 
-    $("#interactiveMapHeader").text("Map to " + currentRestaurant);
+    $("#interactiveMapTitle").text("Map to " + currentRestaurant);
 
     $("#interactiveMap").modal("show");
 
