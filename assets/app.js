@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   $("#search").on("click", function () {
 
-    window.location.hash = '<a href="app.js';
+    window.location.hash = '<a href=results';
 
     address = $("#address").val();
 
@@ -32,6 +32,8 @@ $(document).ready(function () {
     var longLatQueryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=" + mapQuestKey + "&location=" + address;
 
     // location.reload() for changing pages?
+
+    // DELETE THIS document.location.href = "results.html";
 
     $.ajax({
       url: longLatQueryURL,
@@ -57,7 +59,8 @@ $(document).ready(function () {
 
         ///..."https://developers.zomato.com/api/v2.1/search?entity_id=280&sort=rating&order=asc&q=" +addressLatitude + "cuisines=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
         ///...test api....https://developers.zomato.com/api/v2.1/search?entity_id=%2094741&entity_type=zone&cuisines=55&establishment_type=1
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?lat=" + addressLatitude + "&lon=" + addressLongitude + "&q=" + cuisines + "&sort=rating" + "&apikey=967e2e08ce22588b1668ae3b432bf765";
+        var queryURL = "https://developers.zomato.com/api/v2.1/search?lat=" + addressLatitude + "&lon=" + addressLongitude + "&q=" + cuisines + "&apikey=967e2e08ce22588b1668ae3b432bf765";
+
         $.ajax({
           url: queryURL,
           method: "get",
@@ -129,11 +132,11 @@ $(document).ready(function () {
 
                 var mapQueryURL = "https://www.mapquestapi.com/staticmap/v5/map?start=" + currentLocation + "&end=" + destinationAddress + "&size=170,170@2x&key=" + mapQuestKey;
 
-                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px").addClass("mapImage").attr("restAddress", location.address).attr("restName", value.name);
+                mapImage.attr("src", mapQueryURL).attr("height", "200px").attr("width", "200px").addClass("mapImage").attr("restAddress", location.address).attr("restName", value.name).addClass("float-right");
 
                 var mapInstruct = $("<h2>");
 
-                mapInstruct.text("Click for Interactive Map").addClass("mapImage").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0");
+                mapInstruct.text("Click for Interactive Map").addClass("mapImage float-right").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0").addClass("float-right");
 
                 columnThree.addClass("col-md-3").addClass("mapColumn").append(mapImage, mapInstruct);
 
