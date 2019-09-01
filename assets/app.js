@@ -23,6 +23,8 @@ $(document).ready(function () {
 
     $(".carousel-inner").hide();
 
+    $(".result").removeClass("d-none");
+
     $(".jumbotron m-0").css({ 'background-color': 'none' });
 
     if (address === "" & cuisines === "") {
@@ -72,8 +74,6 @@ $(document).ready(function () {
           .then(function (data) {
 
             data = data.restaurants;
-
-            var result = "";
 
             $(".result").empty();
 
@@ -136,7 +136,7 @@ $(document).ready(function () {
 
                 var mapInstruct = $("<h2>");
 
-                mapInstruct.text("Click for Interactive Map").addClass("mapImage float-right").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0").addClass("float-right");
+                mapInstruct.text("Click for Interactive Map").addClass("mapImage float-right").css("opacity", ".7").css("background", "grey").css("color", "white").css("width", "200px").css("position", "absolute").css("bottom", "-2px").css("font-size", "16px").css("text-align", "center").css("padding", "8px 0").addClass("text-right");
 
                 columnThree.addClass("col-md-3").addClass("mapColumn").append(mapImage, mapInstruct);
 
