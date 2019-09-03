@@ -140,6 +140,10 @@ margin-bottom: 5px;
 }
   /* Carousel Start */
 
+  .carouselImage {
+    min-width: 100%;
+  }
+
   .carousel-item, .img-fluid {
     width: 100%;
     height: 100%;
@@ -372,14 +376,9 @@ hr {
           border-radius:15px;
           border-block-color: blue;
         }
-        .carousel-item{
 
-          margin: 1px;
-
-        }
         .cuisine-name{
           font-size: 66px;
-          margin: 1px;
         }
 
       }

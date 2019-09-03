@@ -7,6 +7,31 @@ $(document).ready(function () {
 
   L.mapquest.key = mapQuestKey;
 
+  function fixCarousel() {
+    $(".carousel-item > img").each(function (i, img) {
+      $(img).css({
+        position: "relative",
+        left: ($(img).parent().width() - $(img).width()) / 2
+      });
+    });
+  };
+
+  fixCarousel();
+
+  $(window).resize(function () {
+    fixCarousel();
+  });
+
+  $("#carouselExampleIndicators").on("slid.bs.carousel", function () {
+    fixCarousel();
+  });
+
+  $("#carouselExampleIndicators").on("slide.bs.carousel", function () {
+    setTimeout(function () {
+      fixCarousel();
+  }, 1);
+  });
+
   $("#cuisine, #address").keyup(function (event) {
     if (event.keyCode === 13) {
       $("#search").click();
@@ -18,7 +43,7 @@ $(document).ready(function () {
     address = $("#address").val().trim();
 
     var cuisines = $('#cuisine').val().trim();
-    
+
     if (address === "") {
       $("#badInput").modal("show");
 
