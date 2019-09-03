@@ -254,8 +254,8 @@ hr {
     
       h1{
         
-        font-size: 3em;
-        letter-spacing: 12px;
+        font-size: 1em;
+        letter-spacing: 1px;
         text-shadow: 2px 2px 2px #CCCCCC;
         text-shadow: -1px 0 0 #000000, 1px 1px 0 #000000,
                  2px -1px 0 #000000, 3px 0 0 #000000;
@@ -372,4 +372,14 @@ hr {
           border-radius:15px;
           border-block-color: blue;
         }
+        .carousel-item{
+
+          margin: 1px;
+
+        }
+        .cuisine-name{
+          font-size: 66px;
+          margin: 1px;
+        }
+
       }
