@@ -15,6 +15,10 @@ body {
     line-height: 17px;
  
   }
+
+  .floatingDiv {
+    position: relative;
+  }
   
   section:first-child {
     background: #ededed;
@@ -25,26 +29,7 @@ body {
     font-family: 'Frank Ruhl Libre', serif;
   }
 
-
-/*
-  h1{
-    
-    font-size: 5em;
-    letter-spacing: 12px;
-    text-shadow: 2px 2px 2px #CCCCCC;
-    text-shadow: -1px 0 0 #000000, 1px 1px 0 #000000,
-             2px -1px 0 #000000, 3px 0 0 #000000;
-    text-transform: uppercase; 
-    text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
-             0 0 20px rgb(30, 32, 32), 0 0 30px #A5F1FF,
-             0 0 40px #A5F1FF;
-    font-family: 'Special Elite', cursive;
-    
-
-}
-*/
-
-.food-mood{ /* MJ */
+#food-mood{
   font-size: 70px;
   float: left;
   font-family: 'Fugaz One';
@@ -57,14 +42,13 @@ body {
   font-size: 22px;
 }
 
-.sounds-good{ /* MJ */
-  /*float: left;*/
+#sounds-good {
   font-family: 'Fugaz One';
   color: white;
   margin-right: 20px;
 }
 
-.cuisine-name { /* MJ */
+.cuisine-name {
   font-family: 'Pacifico';
   font-size: 200px;
   color: white;
@@ -74,8 +58,13 @@ body {
   height: 500px;
 }
 
-.mapImage {
+.mapImage, .floatingDiv {
   cursor: pointer;
+  width: 200px;
+}
+
+.mapRealImage, .floatingDiv {
+  height: 200px;
 }
 
   #cuisine,
@@ -107,29 +96,6 @@ margin-bottom: 5px;
 
   }
 
-  .jumbotron{
-      position:fixed;
-      top:0px;
- padding-left:25px;
- /*color:blue;*/
- left: 0px;
- height: 20%;
- width:100%;
- z-index: 11;
-  }
-
-  .nav{
- position:fixed;
- top:80px;
- right:200px;
- padding: 15px;
- z-index: 1;
-
-  }
-  /*.result{
-  margin-top:150px;
-  }*/
-
   #notFooter {
     min-height: 100%;
     margin-bottom: -106px;
@@ -147,16 +113,7 @@ margin-bottom: 5px;
   .carousel-item, .img-fluid {
     width: 100%;
     height: 100%;
-    /*height: 100vh;*/ /* vh = vertical height at 100%, fills out entire browser window */
   }
-
-  /*}
-  #myCarousel{
-  height:50%;
-  width:65%;
-  margin-left:150px;
-  margin-top:120px;
-  }*/
 
   /* Carousel End */
 
@@ -164,21 +121,6 @@ footer {
   background-color: #000000 !important;
   height: 106px;
 }
-
-/* MJ [this taken out of below CSS so that the comment close here wouldn't interrupt that comment and activate some of the code*/
-/*
-  .footer { 
-    position: fixed;
-    left: 0;
-    padding: 15px;
-    bottom: 0;
-    width: 100%;
-    background-color: #333333;
-    color: white;
-    text-align: center;
-    font-family: 'Fugaz One';
-  }
-  */
 
   h4, h5{
     color:black;
@@ -234,11 +176,129 @@ hr {
 @import url("https://prrashi.github.io/rateYo/bower_components/jquery-rateyo/min/jquery.rateyo.min.css");
 
   /* Responsive Media Settings */
-
-  @media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
+  @media only screen and (max-width: 1380px) {
+    #food-mood {
+      font-size: 60px;
+      padding-bottom: 5px;
     }
+
+    .cuisine-name {
+      font-size: 180px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1325px) {
+    #food-mood {
+      font-size: 50px;
+    }
+
+    #sounds-good {
+      font-size: 20px;
+    }
+
+    .cuisine-name {
+      font-size: 150px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1230px) {
+    #food-mood {
+      margin-left: 50px !important;
+      padding-left: 0 !important;
+    }
+
+    #allTheInputs {
+      margin-right: 50px !important;
+      padding-right: 0 !important;
+    }
+
+    .cuisine-name {
+      font-size: 135px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1140px) {
+    #food-mood {
+      margin-left: 35px !important;
+    }
+
+    #allTheInputs {
+      margin-right: 35px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1115px) {
+    #food-mood {
+      margin-left: 20px !important;
+    }
+
+    #allTheInputs {
+      margin-right: 20px !important;
+    }
+
+    .cuisine-name {
+      font-size: 120px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1080px) {
+    #sounds-good {
+      display: none !important;
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .mapImage {
+      width: 150px;
+    }
+
+    .mapInstruct {
+      font-size: 12px !important;
+    }
+
+    .rest-img, .mapRealImage, .floatingDiv {
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  @media only screen and (max-width: 830px) {
+    #food-mood-div {
+      margin: auto;
+    }
+
+    #food-mood {
+      float: none !important;
+      margin: 0 !important;
+    }
+
+    #allTheInputs {
+      float: none !important;
+      padding-top: 10px;
+      margin: auto !important;
+    }
+
+    #sounds-good {
+      display: inline !important;
+    }
+  }
+
+  @media only screen and (max-width: 775px) {
+    #food-mood {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
+
+    #sounds-good {
+      display: none !important;
+    }
+
+    .cuisine-name {
+      font-size: 90px !important;
+    }
+  }
+
+  @media only screen and (max-width: 640px) {
     .container{
         font-size: 18px;
         line-height: 17px;
@@ -260,14 +320,6 @@ hr {
         
         font-size: 1em;
         letter-spacing: 1px;
-        text-shadow: 2px 2px 2px #CCCCCC;
-        text-shadow: -1px 0 0 #000000, 1px 1px 0 #000000,
-                 2px -1px 0 #000000, 3px 0 0 #000000;
-        text-transform: uppercase; 
-        text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
-                 0 0 20px rgb(30, 32, 32), 0 0 30px #A5F1FF,
-                 0 0 40px #A5F1FF;
-        font-family: 'Special Elite', cursive;
         
     
     }
@@ -292,24 +344,7 @@ hr {
         width:auto;
     
       }
-      .jumbotron{
-          position:fixed;
-          top:0px;
-     padding-left:25px;
-     /*color:blue;*/
-     left: 0px;
-     height:165px;
-        width:100%;
-        margin-bottom: 10%;
-      }
-    
-      .nav{
-     position:fixed;
-     top:auto;
-     right:auto;
-     padding: 0px;
-    
-      }
+
       .result{
       margin:auto;
       float:left;
@@ -321,17 +356,6 @@ hr {
       margin:40% 0% 0% 15%;
 
       clear: both;
-      }
-    
-      .footer {
-        position: fixed;
-        left: 0;
-        padding: 15px;
-        bottom: 0;
-        background-color: brown;
-        color: white;
-        text-align: center;
-        z-index: 1;
       }
 
       .ratingText  {
