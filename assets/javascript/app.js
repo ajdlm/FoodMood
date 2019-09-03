@@ -1,7 +1,5 @@
 $(document).ready(function () {
-  var mapQuestKey = "wUnd0Bo4VFnAAn1TbHBgyoaEY3vhgkD6";
-
-  //var mapQuestKey = "jZh3b Axg3v1iflCQUxzPDHK0HMxOxAgF";
+  var mapQuestKey = "jZh3bAxg3v1iflCQUxzPDHK0HMxOxAgF";
 
   var address, addressLatitude, addressLongitude, mapVar;
 
@@ -51,6 +49,8 @@ $(document).ready(function () {
     };
 
     window.location.hash = "results";
+
+    $("#notFooter").removeClass("bg-dark");
 
     $("body").css('background', 'white');
 
