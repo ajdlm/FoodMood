@@ -185,7 +185,7 @@ $(document).ready(function () {
 
                 var floatingDiv = $("<div>");
 
-                floatingDiv.addClass("floatingDiv float-right").append(mapImage, mapInstruct);
+                floatingDiv.addClass("floatingDiv float-right").append(mapImage, mapInstruct).css("margin-left", "auto");
 
                 columnThree.addClass("col-sm-3 d-flex align-items-center").addClass("mapColumn").append(floatingDiv);
 
