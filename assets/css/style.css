@@ -78,6 +78,8 @@ top: 0px;
 width: 95px;
 height:35px;
 font-size: 16px;
+padding: 0 12px;
+margin-bottom: 3.75px !important;
   }
 
   .popupClose {
@@ -98,6 +100,7 @@ font-size: 16px;
   .push {
     height: 106px;
 }
+
   /* Carousel Start */
 
   .carouselImage {
@@ -127,7 +130,7 @@ footer {
  }
 
 h2 {
-   border-color:default __373c0__2oFDT;
+   border-color:default;
     overflow:hidden; 
     color:red;
  font-size:22px;
@@ -166,9 +169,20 @@ hr {
 
     }
 
-@import url("https://prrashi.github.io/rateYo/bower_components/jquery-rateyo/min/jquery.rateyo.min.css");
-
   /* Responsive Media Settings */
+
+  /* The following is the beginning of an attempt to
+  make deal with the space issues on very long
+  viewports such as iPads and iPad pros:
+
+  @media only screen and (min-height: 900px) {
+    #headerArea {
+      padding-top: 74px !important;
+      padding-bottom: 58px !important;
+      background: black;
+    }
+  } */
+
   @media only screen and (max-width: 1380px) {
     #food-mood {
       font-size: 60px;
@@ -403,82 +417,6 @@ hr {
     }
   }
 
- /* @media only screen and (max-width: 640px) {
-      h1{
-        
-        font-size: 1em;
-        letter-spacing: 1px;
-        
-    
-    }
-    
-      #cuisine,
-      .mr-3{
-    width:150px;   
-      }
-
-      #search{
-    width:auto;
-    height:auto;
-    font-size: 16px;    
-      }
-    /*  .container{
-        margin-top:auto;
-        width:auto;
-    
-      }*/
-
-/*      #myCarousel{
-      height:50%;
-      width:70%;
-      margin:40% 0% 0% 15%;
-
-      clear: both;
-      }*//*
-
-      .ratingText  {
-            padding:3px 6px 3px 6px;
-              margin:25px;
-          
-                }
-                 
-          h5{
-            color:black;
-        }
-
-        h6{
-          color:rgb(114, 110, 110);
-          font-size:auto;
-          
-        }
-
-        h2{
-          border-color:default __373c0__2oFDT;
-            overflow:hidden; 
-            color:red;
-        font-size:auto;
-        }
-        h4{
-        color:black;
-
-
-        }
-
-        a{
-          margin:50px;
-          background-blend-mode: color;
-        }
-        .rest-img{
-          background-color:black;
-          border-radius:15px;
-        }
-
-        .cuisine-name{
-          font-size: 66px;
-        }
-
-      }*/
-
       @media only screen and (max-width: 480px) {
         .cuisine-name {
           font-size: 65px !important;
@@ -486,11 +424,21 @@ hr {
 
         #address, #cuisine {
           margin-right: 8px !important;
-          width: 125px;
+          width: 127.5px;
+        }
+
+        #cuisine, #address {
+          padding: 12.5px 7.5px;
         }
 
         #search {
-          margin: 0 !important;
+          padding: 0 6px;
+          height: 30px;
+          width: 89px;
+        }
+
+        #mapGoesHere {
+          height: 300px;
         }
       }
 
@@ -500,7 +448,11 @@ hr {
         }
 
         #address, #cuisine {
-          width: 100px;
+          width: 102.5px;
+        }
+
+        #address, #cuisine, #search {
+          font-size: 14px;
         }
 
         #food-mood {
@@ -515,6 +467,13 @@ hr {
         }
 
         #address, #cuisine {
-          width: 80px;
+          width: 82.5px;
+          font-size: 11.5px;
+          padding: 10px 3px;
+        }
+
+        #search {
+          margin-top: .3px !important;
+          margin-bottom: 0 !important;
         }
       }
