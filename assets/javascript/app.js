@@ -129,15 +129,15 @@ $(document).ready(function () {
 
                 result += "</div>";
 
-                result += "<p class='ratingText'>" + "<strong>" + userRating.aggregate_rating + "<span class='resultText'>" + "/5.0" + "</span>" + "</strong></p><br>";
+                result += "<p class='ratingText'>" + "<strong>" + userRating.aggregate_rating + "<span class='resultText'>" + "/5.0" + "</span>" + "</strong></p>";
 
-                result += "<a href=" + value.url + " target='_blank' class='action_link'>" + "<h2>" + value.name + "</strong></h2></a>";
+                result += "<br /><br class='hideThis' /><a href=" + value.url + " target='_blank' class='action_link'>" + "<h2>" + value.name + "</strong></h2></a><br />";
 
                 result += "<h4>" + '<strong>' + "Cuisines: " + '</strong>' + value.cuisines + "</h4>" + "<h6>" + location.address + "</h6>";
 
                 result += "<p class='resultText d-inline'>" + value.phone_numbers + "</p>";
 
-                result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
+                result += "<a href=" + value.menu_url + " target='_blank' class='action_link menuPush'>" + "Menu" + "</a>";
 
                 var newRow = $("<div>");
 

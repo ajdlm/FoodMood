@@ -126,14 +126,14 @@ footer {
    
  }
 
-h2{
+h2 {
    border-color:default __373c0__2oFDT;
     overflow:hidden; 
     color:red;
  font-size:22px;
 }
 
- a{
+.menuPush {
   margin:50px;
   background-blend-mode: color;
  }
@@ -351,6 +351,18 @@ hr {
       height: 106.98px;
       width: 106.98px;
     }
+
+    /* The following could be moved into the 410px media query if we
+    decide to keep styling more consistent between viewports (prior
+    to that, anyway -- beyond that point it looks even more awkward): */
+
+    .hideThis {
+      display: none;
+    }
+
+    h2 {
+      margin-top: 8px !important;
+    }
   }
 
   @media only screen and (max-width: 410px) {
@@ -370,10 +382,25 @@ hr {
       height: 97.5px;
       width: 97.5px;
     }
+  }
 
-    /*.ratingText {
-      margin-bottom: 0;
-    }*/
+  @media only screen and (max-width: 359px) {
+    .mapColumn {
+      padding-left: 0 !important;
+    }
+
+    .mapImage {
+      width: 91.66px;
+    }
+
+    .rest-img, .mapRealImage, .floatingDiv {
+      height: 91.66px;
+      width: 91.66px;
+    }
+
+    .menuPush {
+      margin-right: 0;
+    }
   }
 
  /* @media only screen and (max-width: 640px) {
