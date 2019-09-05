@@ -79,7 +79,7 @@ width: 95px;
 height:35px;
 font-size: 16px;
 padding: 0 12px;
-margin-bottom: 3.75px !important;
+margin-bottom: 4px !important;
   }
 
   .popupClose {
@@ -175,10 +175,9 @@ hr {
   make deal with the space issues on very long
   viewports such as iPads and iPad pros:
 
-  @media only screen and (min-height: 900px) {
-    #headerArea {
-      padding-top: 74px !important;
-      padding-bottom: 58px !important;
+  @media only screen and (min-height: 800px) {
+    #carouselExampleIndicators {
+      padding-top: 50px;
       background: black;
     }
   } */
@@ -379,44 +378,6 @@ hr {
     }
   }
 
-  @media only screen and (max-width: 410px) {
-    .mapImage {
-      width: 97.5px;
-    }
-
-    .mapColumn {
-      padding-left: 7.5px !important;
-    }
-
-    hr {
-      margin: 12px 0 !important;
-    }
-
-    .rest-img, .mapRealImage, .floatingDiv {
-      height: 97.5px;
-      width: 97.5px;
-    }
-  }
-
-  @media only screen and (max-width: 359px) {
-    .mapColumn {
-      padding-left: 0 !important;
-    }
-
-    .mapImage {
-      width: 91.66px;
-    }
-
-    .rest-img, .mapRealImage, .floatingDiv {
-      height: 91.66px;
-      width: 91.66px;
-    }
-
-    .menuPush {
-      margin-right: 0;
-    }
-  }
-
       @media only screen and (max-width: 480px) {
         .cuisine-name {
           font-size: 65px !important;
@@ -442,6 +403,25 @@ hr {
         }
       }
 
+  @media only screen and (max-width: 410px) {
+    .mapImage {
+      width: 97.5px;
+    }
+
+    .mapColumn {
+      padding-left: 7.5px !important;
+    }
+
+    hr {
+      margin: 12px 0 !important;
+    }
+
+    .rest-img, .mapRealImage, .floatingDiv {
+      height: 97.5px;
+      width: 97.5px;
+    }
+  }
+
       @media only screen and (max-width: 380px) {
         .cuisine-name {
           font-size: 60px !important;
@@ -459,7 +439,30 @@ hr {
           padding-left: 0 !important;
           padding-right: 0 !important;
         }
+
+        #search {
+          margin-bottom: 3.75px !important;
+        }
       }
+
+  @media only screen and (max-width: 359px) {
+    .mapColumn {
+      padding-left: 0 !important;
+    }
+
+    .mapImage {
+      width: 91.66px;
+    }
+
+    .rest-img, .mapRealImage, .floatingDiv {
+      height: 91.66px;
+      width: 91.66px;
+    }
+
+    .menuPush {
+      margin-right: 0;
+    }
+  }
 
       @media only screen and (max-width: 355px) {
         .cuisine-name {
