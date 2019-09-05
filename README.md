@@ -1,6 +1,6 @@
 # super-pancake
 
-<h1>Project #1 Group #1</h1>
+<h1>FoodMood</h1>
 
 <h3>Team Members</h3>
 Antonio
