@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     $("#carouselExampleIndicators").hide();
 
-    $(".result").removeClass("d-none");
+    $("#result").removeClass("d-none");
 
     $(".jumbotron m-0").css({ 'background-color': 'none' });
 
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
             data = data.restaurants;
 
-            $(".result").empty();
+            $("#result").empty();
 
             $.each(data, function (index, value) {
               var res = data[index];
@@ -129,15 +129,15 @@ $(document).ready(function () {
 
                 result += "</div>";
 
-                result += "<p class='ratingText'>" + "<strong>" + userRating.aggregate_rating + "<span class='resultText'>" + "/5.0" + "</span>" + "</strong></p><br>";
+                result += "<p class='ratingText'>" + "<strong>" + userRating.aggregate_rating + "<span class='resultText'>" + "/5.0" + "</span>" + "</strong></p>";
 
-                result += "<a href=" + value.url + " target='_blank' class='action_link'>" + "<h2>" + value.name + "</strong></h2></a>";
+                result += "<br /><br class='hideThis' /><a href=" + value.url + " target='_blank' class='action_link'>" + "<h2>" + value.name + "</strong></h2></a><br />";
 
                 result += "<h4>" + '<strong>' + "Cuisines: " + '</strong>' + value.cuisines + "</h4>" + "<h6>" + location.address + "</h6>";
 
                 result += "<p class='resultText d-inline'>" + value.phone_numbers + "</p>";
 
-                result += "<a href=" + value.menu_url + " target='_blank' class='action_link'>" + "Menu" + "</a>";
+                result += "<a href=" + value.menu_url + " target='_blank' class='action_link menuPush'>" + "Menu" + "</a>";
 
                 var newRow = $("<div>");
 
@@ -163,9 +163,9 @@ $(document).ready(function () {
                   foodImage.attr("src", value.thumb);
                 };
 
-                columnOne.addClass("col-sm-3 d-flex align-items-center").append(foodImage);
+                columnOne.addClass("col-md-3 d-none d-md-flex align-items-center").append(foodImage);
 
-                columnTwo.addClass("col-sm-6").html(result);
+                columnTwo.addClass("col-md-6 col-8").html(result);
 
                 var currentLocation = address.replace(/ /g, "+");
 
@@ -187,16 +187,16 @@ $(document).ready(function () {
 
                 floatingDiv.addClass("floatingDiv float-right").append(mapImage, mapInstruct).css("margin-left", "auto");
 
-                columnThree.addClass("col-sm-3 d-flex align-items-center").addClass("mapColumn").append(floatingDiv);
+                columnThree.addClass("col-md-3 col-4 d-flex align-items-center").addClass("mapColumn").append(floatingDiv);
 
                 newRow.append(columnOne, columnTwo, columnThree);
 
                 if (parsingNow === (data.length - 1)) {
-                  $(".result").append(newRow)
+                  $("#result").append(newRow)
                 }
 
                 else {
-                  $(".result").append(newRow, "<hr size='330'>");
+                  $("#result").append(newRow, "<hr size='330'>");
                 };
               });
             });
@@ -204,7 +204,7 @@ $(document).ready(function () {
       });
   });
 
-  $(".result").on("click", ".mapImage", function (event) {
+  $("#result").on("click", ".mapImage", function (event) {
     var currentRestaurant = $(this).attr("restName");
 
     $("#interactiveMapTitle").text("Map to " + currentRestaurant);

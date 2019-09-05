@@ -30,7 +30,7 @@
 
       <div id="allTheInputs" class="float-right pb-2 pr-5 mr-5">
         <h4 id="sounds-good" class="d-inline">What sounds good to you?</h4>
-        <input id="cuisine" class="mr-4" type="text" placeholder="Cuisine Type" />
+        <input id="cuisine" class="mr-3" type="text" placeholder="Cuisine Type" />
         <input id="address" class="mr-3" type="text" placeholder="Address" />
         <button id="search" class="btn btn-info">Submit</button>
       </div>
@@ -102,7 +102,7 @@
     </section>
     <!-- End of CAROUSEL Section -->
 
-    <div class="result container d-none py-3 my-4"></div>
+    <div id="result" class="container d-none py-3 my-4"></div>
 
     <div class="modal" id="interactiveMap" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -123,7 +123,6 @@
       </div>
     </div>
 
-    <!--User nono modal-->
     <div class="modal" id="badInput" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -142,10 +141,10 @@
         </div>
       </div>
     </div>
-    <!--User nono modal end-->
 
     <div class="push"></div>
   </div>
+  
   <!-- Start of FOOTER Section -->
 
   <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
