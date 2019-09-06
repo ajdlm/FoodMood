@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var mapQuestKey = "jZh3bAxg3v1iflCQUxzPDHK0HMxOxAgF";
+  var mapQuestKey = "1rySJiCRmjd2Eg8yQ16xnYvLxAQAlAyY";
 
   var address, addressLatitude, addressLongitude, mapVar;
 
@@ -135,7 +135,9 @@ $(document).ready(function () {
 
                 result += "<h4>" + '<strong>' + "Cuisines: " + '</strong>' + value.cuisines + "</h4>" + "<h6>" + location.address + "</h6>";
 
-                result += "<p class='resultText d-inline'>" + value.phone_numbers + "</p>";
+                var firstPhone = value.phone_numbers.split(",");
+
+                result += "<p class='resultText d-inline'>" + firstPhone[0] + "</p>";
 
                 result += "<a href=" + value.menu_url + " target='_blank' class='action_link menuPush'>" + "Menu" + "</a>";
 
