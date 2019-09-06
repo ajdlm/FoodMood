@@ -5,9 +5,9 @@
 
 ### Team Members
 
-Antonio
-Abdu
-Adam
+Antonio\
+Abdu\
+Adam\
 Matt
 
 
