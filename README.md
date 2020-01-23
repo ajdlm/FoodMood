@@ -20,13 +20,13 @@ Deployed app at https://ajdlm.github.io/FoodMood/.
 
 #### Key Features
 
-* Restaurants near you
+* restaurants near the useer
 
-* Details of the restaurants
+* details of the restaurants
 
-* Locations of the restaurants
+* locations of the restaurants
 
-* Routes to the restaurants from user
+* routes to the restaurants from the user
 
 
 #### Technologies Used
@@ -40,9 +40,6 @@ Deployed app at https://ajdlm.github.io/FoodMood/.
 * jQuery
 
 * AJAX
-
-
-#### New Technologies Used
 
 * MapQuest.js
 
@@ -58,6 +55,6 @@ Deployed app at https://ajdlm.github.io/FoodMood/.
 
 #### Outstanding Issues
 
-* some code leftover in style.css may no longer have any real purpose
+* Some code remaining in style.css may no longer have any real purpose.
 
-* because of the size of the food images for the carousel, they don't scale vertically very well on iPads and other very long viewports and little has been done to offset this issue beyond making the footer seem to grow upward to fill the empty space
+* Because of the size of the food images for the carousel, they don't scale vertically very well on iPads and other very long viewports and little has been done to offset this issue beyond making the footer seem to grow upward to fill the empty space.
