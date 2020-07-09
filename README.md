@@ -58,3 +58,5 @@ Deployed app at https://ajdlm.github.io/FoodMood/.
 * Some code remaining in style.css may no longer have any real purpose.
 
 * Because of the size of the food images for the carousel, they don't scale vertically very well on iPads and other very long viewports and little has been done to offset this issue beyond making the footer seem to grow upward to fill the empty space.
+
+* While a thumbnail image would previously display next to each search result if there was one available, all such images appear to have been removed from the Zomato API along with the property that used to house them. The restaurant objects in the API still contain two properties that might eventually house such images -- "featured_image" and "thumb" -- but in every instance I have seen, neither of these properties is used to store image URLs. As such, for the time being, all search results will be accompanied only by the generic placeholder image from the app's assets folder.
